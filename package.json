@@ -1,0 +1,43 @@
+{
+  "name": "odin-blog-api",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "dev:api": "npm run dev -w @margin/api",
+    "dev:blog": "npm run dev -w @margin/blog",
+    "dev:author": "npm run dev -w @margin/author",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "test": "npm test --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "db:generate": "npm run db:generate -w @margin/api",
+    "db:migrate": "npm run db:migrate -w @margin/api --",
+    "db:deploy": "npm run db:deploy -w @margin/api",
+    "author:provision": "npm run author:provision -w @margin/api",
+    "seed": "npm run seed -w @margin/api",
+    "db:test:migrate": "npm run db:test:migrate -w @margin/api",
+    "db:validate": "npm run db:validate -w @margin/api"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.1",
+    "eslint": "9.39.1",
+    "eslint-plugin-react-hooks": "7.0.1",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "globals": "16.5.0",
+    "prettier": "3.6.2",
+    "vitest": "5.0.5",
+    "@testing-library/react": "16.3.0",
+    "@testing-library/user-event": "14.6.1",
+    "@testing-library/jest-dom": "6.9.1",
+    "jsdom": "26.1.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  }
+}

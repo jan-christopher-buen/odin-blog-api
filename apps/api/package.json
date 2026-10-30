@@ -1,0 +1,33 @@
+{
+  "name": "@margin/api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --env-file=.env --watch src/server.js",
+    "start": "node --env-file-if-exists=.env src/server.js",
+    "db:generate": "node --env-file-if-exists=.env ../../node_modules/prisma/build/index.js generate",
+    "db:migrate": "node --env-file=.env ../../node_modules/prisma/build/index.js migrate dev",
+    "db:deploy": "node --env-file-if-exists=.env ../../node_modules/prisma/build/index.js migrate deploy",
+    "author:provision": "node --env-file=.env scripts/provision.js",
+    "seed": "node --env-file=.env scripts/seed.js",
+    "test": "node --env-file=.env --test --test-concurrency=1 test/*.test.js",
+    "db:test:migrate": "node --env-file=.env scripts/migrate-test.js",
+    "db:validate": "node --env-file-if-exists=.env ../../node_modules/prisma/build/index.js validate"
+  },
+  "dependencies": {
+    "express": "5.1.0",
+    "@prisma/client": "7.10.1",
+    "@prisma/adapter-pg": "7.10.1",
+    "pg": "8.16.3",
+    "bcryptjs": "3.0.3",
+    "jsonwebtoken": "9.0.2",
+    "express-validator": "7.3.1",
+    "cors": "2.8.5",
+    "helmet": "8.1.0",
+    "express-rate-limit": "8.7.1"
+  },
+  "devDependencies": {
+    "prisma": "7.10.1",
+    "supertest": "7.1.4"
+  }
+}
