@@ -1,0 +1,508 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap');
+:global(*) {
+  box-sizing: border-box;
+}
+:global(body) {
+  margin: 0;
+  background: #f2f3f7;
+  color: #222438;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+:global(a) {
+  color: inherit;
+  text-underline-offset: 4px;
+}
+:global(button),
+:global(input),
+:global(textarea),
+:global(select) {
+  font: inherit;
+}
+:global(button) {
+  cursor: pointer;
+  border: 1px solid #b8bbcc;
+  border-radius: 4px;
+  background: white;
+  padding: 0.6rem 0.9rem;
+  color: #222438;
+}
+:global(button:disabled) {
+  opacity: 0.55;
+  cursor: default;
+}
+:global(input),
+:global(textarea),
+:global(select) {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #b8bbcc;
+  border-radius: 3px;
+  color: #222438;
+  background: white;
+}
+:global(textarea) {
+  resize: vertical;
+}
+:global(label) {
+  display: block;
+  font-weight: 600;
+  margin: 20px 0 7px;
+}
+:global(label span) {
+  font-weight: 400;
+  color: #626577;
+}
+:global(:focus-visible) {
+  outline: 3px solid #2549df;
+  outline-offset: 3px;
+}
+:global(h1),
+:global(h2),
+:global(p),
+:global(a) {
+  overflow-wrap: anywhere;
+}
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  background: #222438;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px 4vw;
+}
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  text-decoration: none;
+}
+.logo > span {
+  color: #c5bcff;
+}
+.logo small {
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  border-left: 1px solid #6c6e82;
+  padding-left: 15px;
+  margin-left: 10px;
+}
+.header > div {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  min-width: 0;
+}
+.header > div > span {
+  overflow-wrap: anywhere;
+  max-width: 200px;
+}
+.header button {
+  background: transparent;
+  color: white;
+  border-color: #6c6e82;
+  font-size: 0.8rem;
+}
+:global(main) {
+  width: min(1200px, 92vw);
+  margin: 0 auto;
+  flex: 1;
+}
+.pageHead {
+  padding: 45px 0 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #4e4796;
+  font-weight: 700;
+}
+.pageHead h1 {
+  font-size: 2.6rem;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+  margin: 10px 0;
+}
+.pageHead p:last-child {
+  color: #626577;
+}
+.primary,
+.save {
+  display: inline-block;
+  background: #5142b5;
+  color: white;
+  border: 1px solid #5142b5;
+  text-decoration: none;
+  padding: 0.7rem 1.1rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.listHead {
+  display: flex;
+  justify-content: space-between;
+  background: #e5e6ed;
+  padding: 12px 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.65rem;
+  color: #626577;
+  border-bottom: 1px solid #c4c6d4;
+}
+.postList {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+.postList li {
+  border-bottom: 1px solid #d2d4df;
+}
+.postList a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  text-decoration: none;
+  padding: 22px 20px;
+  background: white;
+}
+.postList a:hover {
+  background: #f8f7ff;
+}
+.postList h2 {
+  font-size: 1.1rem;
+  margin: 0 0 6px;
+  line-height: 1.4;
+}
+.postList time {
+  font-size: 0.75rem;
+  color: #626577;
+}
+.draft,
+.published {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.draft {
+  background: #e9eaf0;
+  color: #575c72;
+}
+.published {
+  background: #e9e5ff;
+  color: #5142b5;
+}
+.pages {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 25px 0;
+  font-size: 0.75rem;
+}
+.pages button {
+  font-size: 0.75rem;
+}
+.empty {
+  padding: 45px 20px;
+  background: white;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 35px 4vw 25px;
+  font-size: 0.7rem;
+  color: #626577;
+  margin-top: 30px;
+}
+.login {
+  min-height: 75vh;
+  display: grid;
+  place-items: center;
+  padding: 40px 0;
+}
+.loginPanel {
+  width: min(100%, 470px);
+  background: white;
+  padding: 42px;
+  border: 1px solid #d2d4df;
+  box-shadow: 6px 6px 0 #e1def4;
+}
+.loginPanel h1 {
+  font:
+    400 2.6rem/1.05 'Newsreader',
+    Georgia,
+    serif;
+  letter-spacing: -0.03em;
+}
+.loginPanel > p {
+  color: #626577;
+}
+.loginPanel button {
+  background: #5142b5;
+  color: white;
+  width: 100%;
+  margin-top: 25px;
+  border-color: #5142b5;
+}
+.error {
+  color: #a12040;
+  font-size: 0.8rem;
+  overflow-wrap: anywhere;
+}
+.success {
+  color: #5142b5;
+}
+.editorHead {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 25px 0;
+  font-size: 0.75rem;
+  color: #626577;
+}
+.editor {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 265px;
+  gap: 25px;
+  align-items: start;
+}
+.writing {
+  padding: 30px;
+  background: white;
+  border: 1px solid #d2d4df;
+}
+.writing h1 {
+  font-size: 1.9rem;
+  letter-spacing: -0.04em;
+  margin: 10px 0 30px;
+}
+.titleInput {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+.bodyInput {
+  font:
+    400 1.2rem/1.8 'Newsreader',
+    Georgia,
+    serif;
+}
+.inspector {
+  background: #e9e6f7;
+  border-top: 3px solid #5142b5;
+  padding: 20px;
+  position: sticky;
+  top: 20px;
+}
+.inspector h2 {
+  font-size: 0.95rem;
+  margin: 0;
+}
+.inspector p {
+  font-size: 0.75rem;
+  color: #626577;
+}
+.inspector .success {
+  color: #5142b5;
+}
+.inspector hr {
+  border: 0;
+  border-top: 1px solid #c7c1e3;
+  margin: 25px 0;
+}
+.save {
+  width: 100%;
+  margin-top: 10px;
+}
+.textDanger {
+  color: #a12040;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-size: 0.8rem;
+}
+.moderation {
+  margin-top: 45px;
+  max-width: 900px;
+}
+.moderation > h2 {
+  font-size: 1.3rem;
+}
+.moderation > p {
+  color: #626577;
+  font-size: 0.8rem;
+}
+.comment {
+  border-top: 1px solid #c7cad8;
+  padding: 20px 0;
+  display: flex;
+  gap: 20px;
+  align-items: start;
+  justify-content: space-between;
+}
+.comment > div {
+  min-width: 0;
+  flex: 1;
+}
+.comment time {
+  display: block;
+  color: #626577;
+  font-size: 0.7rem;
+}
+.comment p {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.dialog {
+  border: 1px solid #c7c1e3;
+  padding: 28px;
+  max-width: min(92vw, 470px);
+  border-radius: 5px;
+  color: #222438;
+}
+.dialog::backdrop {
+  background: #17192b99;
+}
+.dialog h2 {
+  font-size: 1.3rem;
+}
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 25px;
+}
+.danger {
+  background: #a12040;
+  color: white;
+  border-color: #a12040;
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: #17192bbf;
+  display: grid;
+  place-items: center;
+  z-index: 20;
+  padding: 20px;
+  overflow: auto;
+}
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.skip {
+  position: absolute;
+  top: -100px;
+  background: white;
+  padding: 10px;
+  z-index: 100;
+}
+.skip:focus {
+  top: 10px;
+}
+@media (max-width: 700px) {
+  .editor {
+    display: flex;
+    flex-direction: column;
+  }
+  .writing {
+    width: 100%;
+    padding: 20px;
+  }
+  .inspector {
+    width: 100%;
+    position: static;
+  }
+  .pageHead {
+    align-items: start;
+    padding-top: 30px;
+  }
+  .pageHead h1 {
+    font-size: 2.1rem;
+  }
+  .pageHead p:last-child {
+    max-width: 180px;
+  }
+  .primary {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  .postList a {
+    padding: 20px 12px;
+    gap: 12px;
+  }
+  .header {
+    padding: 15px 4vw;
+  }
+  .header > div {
+    gap: 12px;
+  }
+  .header > div > span {
+    display: none;
+  }
+  .logo {
+    font-size: 1.5rem;
+  }
+  .logo small {
+    margin-left: 0;
+    padding-left: 10px;
+  }
+  .loginPanel {
+    padding: 28px;
+  }
+  .loginPanel h1 {
+    font-size: 2.3rem;
+  }
+  .comment {
+    flex-direction: column;
+  }
+  .dialog {
+    padding: 20px;
+  }
+  .actions {
+    flex-wrap: wrap;
+  }
+  .footer {
+    gap: 15px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :global(*) {
+    scroll-behavior: auto !important;
+  }
+}
+
+.overlay {
+  border: 0;
+  width: 100vw;
+  max-width: none;
+  max-height: none;
+  height: 100dvh;
+  margin: 0;
+}
+.overlay::backdrop {
+  background: #17192bbf;
+}
