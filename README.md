@@ -116,6 +116,16 @@ Protected requests use `Authorization: Bearer <token>`. JWTs use HS256 with expl
 
 CORS permits only configured exact browser origins and handles Authorization/PATCH/DELETE preflights; it is not authorization and does not restrict curl/server clients. Login is limited to 10 attempts per IP per 15 minutes; comments to 8 per IP per minute. In-memory limits reset on restart and are per API instance. Requests have a 128 KiB JSON body limit, security headers, and generic internal-error responses. Password hashes and secrets are never returned.
 
-## Deployment boundaries
+## Live deployment
 
-This repository is prepared for one API host and two independently built static frontends; no deployment is included. A later deployment needs a **new dedicated Neon database**, a **new Render API service**, and **two separate Vercel projects**. Use root `npm ci`, Prisma generation, hosted `migrate deploy`, private author provisioning, exact production CORS origins, and each frontend's own public API build setting. Static output directories are `apps/blog/dist` and `apps/author/dist`; both hosts must rewrite frontend routes to their own `index.html`. Never embed API secrets in frontend builds. Confirm host-specific commands and proxy settings before deployment.
+- [Reader](https://odin-blog-reader-pi.vercel.app)
+- [Author studio](https://odin-blog-author-seven.vercel.app)
+- [Public API](https://odin-blog-api-uurz.onrender.com/api/posts) — base URL: `https://odin-blog-api-uurz.onrender.com/api`
+
+The reader and studio are separate Vercel Hobby projects. The API runs on a dedicated Render Free web service in Singapore, backed by a dedicated Neon Free PostgreSQL database. Render Free services sleep after inactivity, so the first request can take about a minute. Free provider quotas apply; no paid resources are required.
+
+The Render service builds from the repository root with `npm ci --include=dev && npm run db:generate` and starts with `npm run start -w @margin/api`. Node 24 is configured explicitly. Database migrations and private author provisioning run separately before deployment; neither runs automatically during startup. The API uses the pooled database connection with certificate verification and a bounded connection pool. `TRUST_PROXY_HOPS=1` matches this deployment, and CORS allows only the two production frontend origins above.
+
+Each Vercel project has its own Root Directory: `apps/blog` or `apps/author`. Both use Node 24, install with `cd ../.. && npm ci`, build with `npm run build`, and publish `dist`. Each app's tracked `vercel.json` rewrites SPA deep links to its own `index.html`. `VITE_API_URL` is the public API base URL above, configured for production before building. API secrets and author provisioning credentials are never frontend environment variables.
+
+Production deploys follow the GitHub `main` branch. Apply any future database migrations before deploying API code that requires them. Keep secrets in private provider environment settings and never commit real environment files. The studio requires a privately provisioned author account; no public signup or demo credentials are supplied.
