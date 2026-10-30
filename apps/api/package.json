@@ -29,5 +29,8 @@
   "devDependencies": {
     "prisma": "7.10.1",
     "supertest": "7.1.4"
+  },
+  "engines": {
+    "node": "24.x"
   }
 }

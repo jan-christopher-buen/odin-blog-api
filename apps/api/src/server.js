@@ -3,8 +3,10 @@ import { prisma } from './prisma.js';
 import { createApp } from './app.js';
 const config = configuration();
 await prisma.$connect();
-const server = createApp(prisma, config).listen(process.env.PORT || 3000, () =>
-  console.log('Margin API is listening'),
+const server = createApp(prisma, config).listen(
+  process.env.PORT || 3000,
+  '0.0.0.0',
+  () => console.log('Margin API is listening'),
 );
 for (const signal of ['SIGTERM', 'SIGINT'])
   process.once(signal, () => {
